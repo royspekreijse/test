@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>Hoi</id>
+        <version>1.0.0</version>
+        <authors>Vincent Peppe</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>My package description.</description>
+        <releaseNotes>123124214</releaseNotes>
+    </metadata>
+    <files>
+        <file src="chocolateyBeforeModify.ps1" target="chocolateyBeforeModify.ps1" />
+        <file src="chocolateyInstall.ps1" target="chocolateyInstall.ps1" />
+        <file src="chocolateyUninstall.ps1" target="chocolateyUninstall.ps1" />
+    </files>
+</package>
