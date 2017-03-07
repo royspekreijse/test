@@ -1,19 +1,47 @@
-﻿#region setup
-$WorkingDir = $psISE.CurrentFile.FullPath | Split-Path
-Set-Location $WorkingDir
+﻿$ResourGroupName = 'CS'
+$ResourGroupLocation = 'West Europe'
+$AutomatioAccountName = 'CSAutomation'
+$SubscriptionName = "Visual Studio Premium met MSDN"
+$SubscriptionID = 
+
+#region setup - set path to ISE workingdir - you can skip this
+#$WorkingDir = $psISE.CurrentFile.FullPath | Split-Path
+#Set-Location $WorkingDir
 
 #Log on to Azure environment
-Add-AzureRmAccount -SubscriptionName "Visual Studio Premium met MSDN"
+Add-AzureRmAccount -SubscriptionName $SubscriptionName
 
-#Get Azure Automation Account
-$AAAccT = Get-AzureRmAutomationAccount -Name 'CSAutomation' -ResourceGroupName 'CS'
+#Check and set subscription to be sure
+Get-AzureRmSubscription
+Set-AzureRmContext -SubscriptionName $SubscriptionName
+Get-AzureRmContext
 
+#Get or set resourcegroup name
+Try 
+{
+    $ResourceGrp = Get-AzureRmResourceGroup -Name $ResourGroupName -ErrorAction Stop
+}
+Catch
+{
+    $ResourceGrp = New-AzureRmResourceGroup -Name $ResourGroupName -Location $ResourGroupLocation
+}
+
+#Get or set Azure Automation Account
+Try
+{
+    #Get Azure Automation Account
+    $AAAccT = Get-AzureRmAutomationAccount -Name $AutomatioAccountName -ResourceGroupName $ResourGroupName -ErrorAction Stop
+}
+Catch
+{
+    $AAAccT = New-AzureRmAutomationAccount -Name $AutomatioAccountName -ResourceGroupName $ResourGroupName
+}
 #endregion setup
 
 #Initialize blob storage; New-AzureRmAutomationModule only accepts URI and no direct\local URL
 Try
 {
-    $StorageAcct = Get-AzureRmStorageAccount -ResourceGroupName $AAAcct.ResourceGroupName -ErrorAction Stop
+    $StorageAcct = Get-AzureRmStorageAccount -Name dscmodules -ResourceGroupName $AAAcct.ResourceGroupName -ErrorAction Stop
 }
 Catch 
 {
@@ -22,7 +50,7 @@ Catch
 
 Try
 {
-    $StorageAcct | Get-AzureStorageContainer -Name dscmodules -ErrorAction Stop
+    $StorageAcct | Get-AzureStorageContainer -Name dscmodules -ResourceGroupName $AAAcct.ResourceGroupName -ErrorAction Stop
 }
 Catch
 {
@@ -34,7 +62,7 @@ Catch
 #https://gallery.technet.microsoft.com/scriptcenter/a-GitHub-Repository-265c0b49
 #https://www.powershellgallery.com/packages/DownloadGithub/1.0/Content/DownloadGithub.ps1
 
-$ModulesPath = (Join-Path -Path $WorkingDir  -ChildPath "Modules")
+$ModulesPath = (Join-Path -Path $PSScriptroot  -ChildPath "Modules")
 $WebModules = @('xActiveDirectory','xComputerManagement','xDnsServer','xNetworking')
 
 ForEach ($WebModule in $WebModules) {
@@ -64,26 +92,6 @@ Foreach ($Module in $Modules) {
 #endregion upload modules to BLOB storage
 
 
-#region upload Runbooks
-#PowerShell...
-$PSRunbooksPath = (Join-Path -Path $WorkingDir  -ChildPath "PSRunbooks")
-$Runbooks = Get-ChildItem $PSRunbooksPath
-Foreach ($Runbook in $Runbooks) {
-    $RunbookUpload = Set-AzureStorageBlobContent -Context $StorageAcct.Context -Container dscmodules -File "$($ModulesPath)\$($Runbook).zip"
-
-}
-#Workflow...
-$WFRunbooksPath = (Join-Path -Path $WorkingDir  -ChildPath "WFRunbooks")
-$Runbooks = Get-ChildItem $PSRunbooksPath
-Foreach ($Runbook in $Runbooks) {
-    $RunbookUpload = Set-AzureStorageBlobContent -Context $StorageAcct.Context -Container dscmodules -File "$($ModulesPath)\$($Runbook).zip"
-
-}
-
-#Endregion upload Runbooks
-
-
-
 #Region import DSC configurations
 #Import DSC configuration
 $DSCConfigurations = (Join-Path -Path $WorkingDir  -ChildPath "DSCConfigurations")
@@ -103,3 +111,31 @@ while (-not($job | Get-AzureRmAutomationDscCompilationJob).endtime){Start-Sleep 
 #Show Node configurations
 $AAAccT | Get-AzureRmAutomationDscNodeConfiguration
 #Endregion import DSC configurations
+
+
+
+#ToDo: connect runbook section to GitHub repo
+
+#..or load them directly
+#region upload Runbooks
+#PowerShell...
+$PSRunbooksPath = (Join-Path -Path $WorkingDir  -ChildPath "PSRunbooks")
+$Runbooks = Get-ChildItem $PSRunbooksPath
+Foreach ($Runbook in $Runbooks) {
+    $RunbookUpload = Set-AzureStorageBlobContent -Context $StorageAcct.Context -Container dscmodules -File "$($ModulesPath)\$($Runbook).zip"
+
+}
+#Workflow...
+$WFRunbooksPath = (Join-Path -Path $WorkingDir  -ChildPath "WFRunbooks")
+$Runbooks = Get-ChildItem $PSRunbooksPath
+Foreach ($Runbook in $Runbooks) {
+    $RunbookUpload = Set-AzureStorageBlobContent -Context $StorageAcct.Context -Container dscmodules -File "$($ModulesPath)\$($Runbook).zip"
+
+}
+#Endregion upload Runbooks
+
+
+#set up the HybridRunbookWorker groups
+
+$AAAccT |Get-AzureRMAutomationHybridWorkerGroup
+
