@@ -39,6 +39,32 @@ function Wait-AADSCCompileJob {
 }
 #endregion
 
+<#
+$CustomerName = 'john99'
+$CustomerShortName = 'john99'
+$CustomerID = 'kvk123456789'
+$Password = 'Test123_'
+$DomainAccountName = 'Administrator'
+$DNSIPAddress = @('172.17.9.2')
+$ReversedDNSZoneName = "9.17.172.in-addr.arpa" 
+#>
+
+
+$CustomerName = 'john100'
+$CustomerShortName = 'john10'
+$CustomerID = 'kvk987654321'
+$Password = 'Test123_'
+$DomainAccountName = 'Administrator'
+$DNSIPAddress = @('172.17.37.2')
+$ReversedDNSZoneName = "37.17.172.in-addr.arpa" 
+
+$DomainName = "internal.$($CustomerName).nl"
+$DomainNetbiosName = $CustomerName
+
+$WebAccessServer = "$($CustomerShortName)-rdgw"
+$SessionHost = "$($CustomerShortName)-rdsh1"
+$ConnectionBroker = "$($CustomerShortName)-cc"
+
 
 $DSCConf1 = $AAAcct | Import-AzureRmAutomationDscConfiguration -SourcePath 'C:\Users\peppe\OneDrive\GitHub\CS-CloudDesktop\2016\CC\CC.ps1' `
                                                                     -Published -Force
@@ -64,27 +90,24 @@ for($x=($ReversedNetwork.Count -1); $x -ge 0; $x--){$Result += "$($ReversedNetwo
 $ReversedDNSZoneName = "$($Result)in-addr.arpa" 
 #>
 
-$ReversedDNSZoneName = "9.17.172.in-addr.arpa" 
 
-$DomainName = 'internal.john99.nl'
-$DomainNetbiosName = 'john99'
-$NodeName = 'john99-cc' 
+#$WebAccessServer = @()
+#$WebAccessServer = $ConfigurationData.AllNodes.Where{$_.Role.Name -icontains 'rdw'}.NodeName
+#$SessionHost = @()
+#$SessionHost = $ConfigurationData.AllNodes.Where{$_.Role.Name -icontains 'rdsh'}.NodeName
 
-$WebAccessServer = @()
-$WebAccessServer = $ConfigurationData.AllNodes.Where{$_.Role.Name -icontains 'rdw'}.NodeName
-$SessionHost = @()
-$SessionHost = $ConfigurationData.AllNodes.Where{$_.Role.Name -icontains 'rdsh'}.NodeName
+$NodeName = "$($CustomerShortName)-cc"
 
-$WebAccessServer = 'john99-rdgw'
-$SessionHost = 'john99-rdsh1'
+
 
 $ParamSplat = @{
-    NodeName = $NodeName
+    NodeName = "$($NodeName)-$($CustomerID)"
+    MachineName = $NodeName
     DomainName = $DomainName
     DomainNetbiosName = $DomainNetbiosName
-    safemodePassword = 'Test123_' 
-    DomainAccountName = 'Administrator'
-    DomainAccountPassword = 'Test123_'
+    safemodePassword = $Password
+    DomainAccountName = $DomainAccountName
+    DomainAccountPassword = $Password
     ReversedDNSZoneName = $ReversedDNSZoneName
     WebAccessServer = $WebAccessServer
     SessionHost = $SessionHost
@@ -93,7 +116,7 @@ $ParamSplat = @{
 $ConfigData = @{
     AllNodes = @(
         @{
-            NodeName = $NodeName
+            NodeName = "$($NodeName)-$($CustomerID)"
             PsDscAllowPlainTextPassword = $true
         }
     )
@@ -104,45 +127,48 @@ $DSCompileJob = $DSCConf1 | Start-AzureRmAutomationDscCompilationJob -Parameters
 $DSCompileJob = $DSCompileJob | Wait-AADSCCompileJob -PassThru
 $DSCompileJob
 $DSCompileJob.JobParameters
+[console]::beep(500,300)
 #endregion
 
 
 $DSCConf2 = $AAAcct | Import-AzureRmAutomationDscConfiguration -SourcePath 'C:\Users\peppe\OneDrive\GitHub\CS-CloudDesktop\2016\RDGW\RDGW.ps1' `                                                                   -Published -Force
 
-$NodeName = 'john99-rdgw' 
+$NodeName = "$($CustomerShortName)-rdgw"
 
 $ConfigData = @{
     AllNodes = @(
         @{
-            NodeName = $NodeName 
+            NodeName = "$($NodeName)-$($CustomerID)"
             PsDscAllowPlainTextPassword = $true
         }
     )
 }
 
 $ParamSplat = @{
-    NodeName = $NodeName
+    NodeName = "$($NodeName)-$($CustomerID)"
+    MachineName = $NodeName
     DomainName = $DomainName
-    DomainAccountName = 'Administrator'
-    DomainAccountPassword = 'Test123_'
-    DNSIPAddress = @('172.17.9.2')
-    OUPath = "OU=Computers,OU=Shared,DC=internal,DC=john99,DC=nl"
+    DomainAccountName = $DomainAccountName
+    DomainAccountPassword = $Password
+    DNSIPAddress = $DNSIPAddress
+    OUPath = "OU=Computers,OU=Shared,DC=internal,DC=$($CustomerName),DC=nl"
+    ConnectionBroker = $ConnectionBroker
 }
 
 $DSCompileJob = $DSCConf2 | Start-AzureRmAutomationDscCompilationJob -Parameters $ParamSplat -ConfigurationData $ConfigData
 $DSCompileJob = $DSCompileJob | Wait-AADSCCompileJob -PassThru
 $DSCompileJob
 $DSCompileJob.JobParameters
-
+[console]::beep(500,300)
 
 $DSCConf3 = $AAAcct | Import-AzureRmAutomationDscConfiguration -SourcePath 'C:\Users\peppe\OneDrive\GitHub\CS-CloudDesktop\2016\RDSH\RDSH.ps1' `
                                                                     -Published -Force
-$NodeName = 'john99-rdsh1' 
+$NodeName = "$($CustomerShortName)-rdsh1"
 
 $ConfigData = @{
     AllNodes = @(
         @{
-            NodeName = $NodeName
+            NodeName = "$($NodeName)-$($CustomerID)"
             PsDscAllowPlainTextPassword = $true
         }
     )
@@ -150,12 +176,14 @@ $ConfigData = @{
 
 
 $ParamSplat = @{
-        NodeName = $NodeName
+        NodeName = "$($NodeName)-$($CustomerID)"
+        MachineName = $NodeName
         DomainName = $DomainName
-        DomainAccountName = 'Administrator'
-        DomainAccountPassword = 'Test123_'
-        DNSIPAddress = @('172.17.9.2')
-        OUPath = "OU=Computers,OU=Shared,DC=internal,DC=john99,DC=nl"
+        DomainAccountName = $DomainAccountName
+        DomainAccountPassword = $Password
+        DNSIPAddress = $DNSIPAddress
+        OUPath = "OU=Computers,OU=Shared,DC=internal,DC=$($CustomerName),DC=nl"
+        ConnectionBroker = $ConnectionBroker
 }
 
 
@@ -163,7 +191,40 @@ $DSCompileJob = $DSCConf3 | Start-AzureRmAutomationDscCompilationJob -Parameters
 $DSCompileJob = $DSCompileJob | Wait-AADSCCompileJob -PassThru
 $DSCompileJob
 $DSCompileJob.JobParameters
+[console]::beep(500,300)
 
+
+$DSCConf4 = $AAAcct | Import-AzureRmAutomationDscConfiguration -SourcePath 'C:\Users\peppe\OneDrive\GitHub\CS-CloudDesktop\2016\RDSH\RDSH.ps1' `
+                                                                    -Published -Force
+$NodeName = "$($CustomerShortName)-rdsh2"
+
+$ConfigData = @{
+    AllNodes = @(
+        @{
+            NodeName = "$($NodeName)-$($CustomerID)"
+            PsDscAllowPlainTextPassword = $true
+        }
+    )
+}
+
+
+$ParamSplat = @{
+        NodeName = "$($NodeName)-$($CustomerID)"
+        MachineName = $NodeName
+        DomainName = $DomainName
+        DomainAccountName = $DomainAccountName
+        DomainAccountPassword = $Password
+        DNSIPAddress = $DNSIPAddress
+        OUPath = "OU=Computers,OU=Shared,DC=internal,DC=$($CustomerName),DC=nl"
+        ConnectionBroker = $ConnectionBroker
+}
+
+
+$DSCompileJob = $DSCConf4    | Start-AzureRmAutomationDscCompilationJob -Parameters $ParamSplat -ConfigurationData $ConfigData
+$DSCompileJob = $DSCompileJob | Wait-AADSCCompileJob -PassThru
+$DSCompileJob
+$DSCompileJob.JobParameters
+[console]::beep(500,300)
 <#
 $AAAcct | New-AzureRmAutomationCredential -Name MyCreds -Value $params3.Credential
 
@@ -217,3 +278,8 @@ $AAAcct | Get-AzureRmAutomationDscNodeReport -NodeId $Node.Id -Latest
 
 $AAAcct | Set-AzureRmAutomationDscNode -NodeConfigurationName $ConfigName -Id $Node.Id
 #>
+
+start-sleep -seconds 1
+[console]::beep(500,300)
+start-sleep -seconds 1
+[console]::beep(500,300)
