@@ -39,6 +39,7 @@ function Wait-AADSCCompileJob {
 }
 #endregion
 
+
 <#
 $CustomerName = 'john100'
 $CustomerShortName = 'john10'
@@ -70,7 +71,7 @@ $RDBrokerPublicFQDN = "$($CustomerShortName)-rdb.$($PublicFQDN)"
 $ADFSPublicFQDN = "$($CustomerShortName)-stsixus.$($PublicFQDN)"
 #>
 
-<#
+
 $CustomerName = 'demo2016'
 $CustomerShortName = 'dm2016'
 $EntityName = 'Main'
@@ -88,23 +89,6 @@ $RDPortalName = "demo2016.$($PublicFQDN)"
 $RDBrokerPublicFQDN = "$($CustomerShortName)-rdb.$($PublicFQDN)"
 $ADFSPublicFQDN = "$($CustomerShortName)-stsixus.$($PublicFQDN)"
 #>
-
-$CustomerName = 'wonline'
-$CustomerShortName = 'wnln'
-$EntityName = 'Main'
-$CustomerID = 'kvk88888888'
-$Password = 'Test123_'
-$ADFSAccountPassword = 'Test123_'
-$DomainAccountName = 'Administrator'
-$DNSIPAddress = @('172.17.39.2')
-$ReversedDNSZoneName = "39.17.172.in-addr.arpa" 
-$PublicFQDN = 'w-online.nl'
-$DomainName = "internal.$($PublicFQDN)"
-$DomainNetbiosName = $CustomerName
-$RDGatewayExternalFqdn = "$($CustomerShortName)-rdg.$($PublicFQDN)"
-$RDPortalName = "demo2016.$($PublicFQDN)"
-$RDBrokerPublicFQDN = "$($CustomerShortName)-rdb.$($PublicFQDN)"
-$ADFSPublicFQDN = "$($CustomerShortName)-stsydentic.$($PublicFQDN)"
 
 $WebAccessServer = "$($CustomerShortName)-rdgw1"
 $SessionHost = "$($CustomerShortName)-rdsh1"
