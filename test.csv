@@ -1,0 +1,8 @@
+ComputerName,Order,Target,Host,Filter,FilterName,WaitTime
+*,1,VMM,,VMMLogicalNetwork,Tenant*
+*,2,
+kees99-rdsh2,1,VMM,,VMMLogicNetwork,tenant
+kees99-rdsh3,1,VMM,,VMMLogicNetwork,tenant
+kees99-rdsh4,1,VMM,,VMMLogicNetwork,tenant
+kees99-rdgw1,2,VMM,,VMMLogicNetwork,tenant
+kees99-cc,3,Hyper-V,,,
