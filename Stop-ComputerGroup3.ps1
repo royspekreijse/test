@@ -3,7 +3,8 @@
 
 <#
 .Synopsis
-    Stopt groepen van machines in opgegeven volgorde op basis van een bestand.
+    "One-script-to-stop-them-all". Stopt groepen van zowel VMM als Hyper-V als fysieke machines in opgegeven volgorde op basis van een bestand.
+    
 .DESCRIPTION
     Dit script kan gebruikt worden om machines in een bepaalde volgorde te stoppen.
     De bron is een csv bestand met twee kolommen. De eerste kolom is de machinenaam, de tweede kolom de volgorde op basis van een cijfer waarbij het laagste cijfer als eerste aan de beurt komt.
@@ -31,6 +32,8 @@
                       PAS OP: als target VMM of Hyper-V is, dan wordt naam van de Virtuele Machine gebruikt, NIET de naam in het OS van de VM!!
      'Host'         - niet verplicht. Alleen nodig als target 'Hyper-V' is en via VMM niet te achterhalen is op welke host een VM draait
      'WaitTime'     - niet verplicht. Wachttijd van deze groep. Als verschillende tijden zijn aangegeven, dan wordt de hoogste waarde aangehouden.
+     'Filter'       - niet verplicht. Werkt op dit moment alleen bij de VMM target. Als 'LogicalNetwork' ingevuld is, dan wordt het in kolom FilterName genoemde netwerk gefilterd bovenop de ComputerName filter.
+     'FilterName'   - niet verplicht. Geef (een deel van) de naam waarop gefilterd moet worden voor betreffend filter zoals aangegeven in de kolom 'Filter'.  Wildcards toegestaan.
 
 .PARAMETER TotalWaitTime
     Maximale totale wachttijd van de actie voordat de laatste groep begint.
@@ -151,7 +154,14 @@ Foreach ($MachineGroup in ($Machines | Group-Object -Property 'Order')){
         $MachineNotFound = $true
         Switch ($Machine.Target) {
             "VMM"       {
-                            $Tempie = $VMS | Where-Object Name -like "$($Machine.ComputerName)"
+                            Switch ($Machine.Filter){
+                                "LogicalNetwork"    {
+                                                        $Tempie = $VMS | Where-Object {$_.Name -like $Machine.ComputerName -and $_.VirtualNetworkAdapters.LogicalNetwork.Name -like $Machine.FilterName}
+                                                    }
+                                Default             {
+                                                        $Tempie = $VMS | Where-Object Name -like $Machine.ComputerName
+                                                    }
+                            }
                             If ($Tempie){
                                 $VMMMachines += $Tempie
                                 $MachineNotFound = $false
