@@ -35,9 +35,6 @@
      'Filter'       - niet verplicht. Werkt op dit moment alleen bij de VMM target. Als 'LogicalNetwork' ingevuld is, dan wordt het in kolom FilterName genoemde netwerk gefilterd bovenop de ComputerName filter.
      'FilterName'   - niet verplicht. Geef (een deel van) de naam waarop gefilterd moet worden voor betreffend filter zoals aangegeven in de kolom 'Filter'.  Wildcards toegestaan.
 
-.PARAMETER TotalWaitTime
-    Maximale totale wachttijd van de actie voordat de laatste groep begint.
-
 .PARAMETER VMMServer
     De VMMServer waarop de virtuele machines draaien.
 
@@ -57,23 +54,29 @@ Param(
     [String]$FileName, #Complete path to filename to use, expects CSV set-up. Fixed on English/International delimiter ','
     
     [ValidateNotNullOrEmpty()]
-    [Int]$WaitTime = 60, #Maximum wait time in seconds between shutdown cycle rounds
-
-    [ValidateNotNullOrEmpty()]
     [Int]$IntervalTime = 10, #Wait time in seconds between checks
 
     [String]$VMMServer,
 
+    [ValidateScript({Test-Path $_})]
     [String]$Log = "$($PSScriptroot)\$($MyInvocation.MyCommand.Name.Split('.')[0]).log",
 
     [ValidateNotNullOrEmpty()]
     [String]$Delimiter = ','
 )
 
+If ($Log)
+{
+    $PreviousVerbosePreference = $VerbosePreference
+    $VerbosePreference = "Continue"
+    Start-Transcript $Log
+}
+
 #Check if virtualmachinemanager is loaded
 If ((Get-Module).Name -notcontains 'virtualmachinemanager'){
     Try{
-        Import-Module -Name 'virtualmachinemanager' -ErrorAction Stop
+        Import-Module -Name 'virtualmachinemanager' -ErrorAction Stop -Verbose:$false
+        Write-Verbose -Message "Loaded module VirtualMachineManager"
     }Catch{
         Write-Warning -Message 'Could not load PS module virtualmachinemanager, any VMM based Virtual Machine wil not be stopped'
     }
@@ -88,7 +91,8 @@ Try{
 #Check if ActiveDirectory is loaded
 If ((Get-Module).Name -notcontains 'ActiveDirectory'){
     Try{
-        Import-Module -Name 'ActiveDirectory' -ErrorAction Stop
+        Import-Module -Name 'ActiveDirectory' -ErrorAction Stop -Verbose:$false
+        Write-Verbose -Message "Loaded module ActiveDirectory"
     }Catch{
         Write-Warning -Message 'Could not load PS module ActiveDirectory, cannot do a domain based search in ComputerName'
     }
@@ -272,8 +276,17 @@ Foreach ($MachineGroup in ($Machines | Group-Object -Property 'Order')){
         If (($Timer.Elapsed.Seconds -gt $MachineGroupWaitTime) -and ($AllDown -eq $false)){
             Write-Warning -Message "Order $($Machine.Order): Maximum waittime ($($MachineGroupWaitTime)s) ended! Machines still running!"
         }
-        If (($Timer.Elapsed.Seconds -gt $WaitTime) -or ($AllDown)){
+        If (($Timer.Elapsed.Seconds -gt $MachineGroupWaitTime) -or ($AllDown)){
             $Wait = $false
         }
     }
+}
+
+#Just remove all remote sessions
+Get-PSSession | Remove-PSSession
+
+If ($Log)
+{
+    $VerbosePreference = $PreviousVerbosePreference
+    Stop-Transcript
 }

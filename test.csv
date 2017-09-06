@@ -1,8 +1,9 @@
-ComputerName,Order,Target,Host,Filter,FilterName,WaitTime
-*,1,VMM,,VMMLogicalNetwork,Tenant*
-*,2,
-kees99-rdsh2,1,VMM,,VMMLogicNetwork,tenant
-kees99-rdsh3,1,VMM,,VMMLogicNetwork,tenant
-kees99-rdsh4,1,VMM,,VMMLogicNetwork,tenant
-kees99-rdgw1,2,VMM,,VMMLogicNetwork,tenant
-kees99-cc,3,Hyper-V,,,
+ComputerName,Order,Target,Host,WaitTime,Filter,FilterName
+*rdsh*,1,VMM,,30,LogicalNetwork,tenant*
+dm2016-rdsh*,1,VMM,,30,LogicalNetwork,tenant*
+dm2016-rdgw1,2,Hyper-V,,30
+dm2016-rdgw2,2,Hyper-V,,40
+dm2016-wap1,2,Hyper-V,,50
+dm2016-tst*,2,VMM,,60
+dm2016-cc,3,VMM,,10
+
