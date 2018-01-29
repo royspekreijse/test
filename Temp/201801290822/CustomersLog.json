@@ -1,0 +1,682 @@
+{
+    "Duplicates":  [
+                       {
+                           "Items":  {
+
+                                     },
+                           "Name":  "Dubbelingen in de SupscriptionID"
+                       },
+                       {
+                           "Items":  [
+                                         {
+                                             "FullName":  "",
+                                             "Count":  8
+                                         },
+                                         {
+                                             "FullName":  "ITON Company B.V.",
+                                             "Count":  2
+                                         },
+                                         {
+                                             "FullName":  "ITON Services B.V.",
+                                             "Count":  2
+                                         },
+                                         {
+                                             "FullName":  "NietFacturabel",
+                                             "Count":  6
+                                         },
+                                         {
+                                             "FullName":  "Ydentic",
+                                             "Count":  2
+                                         }
+                                     ],
+                           "Name":  "Dubbelingen in de FullName"
+                       },
+                       {
+                           "Items":  {
+                                         "ShortName":  "",
+                                         "Count":  13
+                                     },
+                           "Name":  "Dubbelingen in de ShortName"
+                       },
+                       {
+                           "Items":  [
+                                         {
+                                             "KvK":  "",
+                                             "Count":  8
+                                         },
+                                         {
+                                             "KvK":  "30074877",
+                                             "Count":  2
+                                         },
+                                         {
+                                             "KvK":  "67474756",
+                                             "Count":  2
+                                         },
+                                         {
+                                             "KvK":  "8092638",
+                                             "Count":  2
+                                         },
+                                         {
+                                             "KvK":  "88888888",
+                                             "Count":  6
+                                         }
+                                     ],
+                           "Name":  "Dubbelingen in de KVK"
+                       }
+                   ],
+    "ColumnChecks":  [
+                         {
+                             "RowKey":  "283ae29f-a3f3-461e-bcc1-6cd640ef2b59",
+                             "Result":  [
+                                            {
+                                                "InfoType":  "",
+                                                "CheckSuccess":  true,
+                                                "Informatie":  [
+                                                                   "De shortname moet minimaal 2 en maximaal 6 characters lang  zijn, voor {0} klanten is dit niet het geval"
+                                                               ],
+                                                "Name":  "",
+                                                "Operator":  "and"
+                                            }
+                                        ],
+                             "TableRow":  {
+                                              "AlternativeNames":  "cau01",
+                                              "CreatedTimestamp":  "\/Date(1512737460736)\/",
+                                              "FullName":  "ITON Services B.V.",
+                                              "ID":  "30074877-0001-0000-0000-000000000000",
+                                              "KvK":  "30074877",
+                                              "ModifiedTimestamp":  "\/Date(1512737460736)\/",
+                                              "Name":  "Workspace365",
+                                              "ShortName":  "wrksp365",
+                                              "Status":  "Active",
+                                              "SubscriptionID":  "9dd84e36-d4f7-40da-bcaf-75b000ad3533",
+                                              "PartitionKey":  "ITON",
+                                              "RowKey":  "283ae29f-a3f3-461e-bcc1-6cd640ef2b59",
+                                              "TableTimestamp":  "\/Date(1513237716944)\/",
+                                              "Etag":  "W/\"datetime\u00272017-12-14T07%3A48%3A36.9441238Z\u0027\"",
+                                              "Datum":  "20171208"
+                                          }
+                         },
+                         {
+                             "RowKey":  "398c3071-3a8f-4bc9-87db-5959c1c20bf5",
+                             "Result":  [
+                                            {
+                                                "InfoType":  "",
+                                                "CheckSuccess":  true,
+                                                "Informatie":  [
+                                                                   "ShortName is voor {0} klant(en) niet gevuld"
+                                                               ],
+                                                "Name":  "",
+                                                "Operator":  "and"
+                                            }
+                                        ],
+                             "TableRow":  {
+                                              "AlternativeNames":  "",
+                                              "CreatedTimestamp":  "\/Date(1512737460737)\/",
+                                              "FullName":  "NietFacturabel",
+                                              "ID":  "88888888-0006-0000-0000-000000000000",
+                                              "KvK":  "88888888",
+                                              "ModifiedTimestamp":  "\/Date(1512737460737)\/",
+                                              "Name":  "itondns",
+                                              "ShortName":  "",
+                                              "Status":  "Active",
+                                              "SubscriptionID":  "f988f301-7b54-4d21-a218-be9e973ec735",
+                                              "PartitionKey":  "ITON",
+                                              "RowKey":  "398c3071-3a8f-4bc9-87db-5959c1c20bf5",
+                                              "TableTimestamp":  "\/Date(1513237716944)\/",
+                                              "Etag":  "W/\"datetime\u00272017-12-14T07%3A48%3A36.9441238Z\u0027\"",
+                                              "Datum":  "20171208"
+                                          }
+                         },
+                         {
+                             "RowKey":  "3ed5cbfd-a627-47d4-8969-b2b8a72395c4",
+                             "Result":  [
+                                            {
+                                                "InfoType":  "",
+                                                "CheckSuccess":  true,
+                                                "Informatie":  [
+                                                                   "ID is {0} keer niet gevuld",
+                                                                   "KVK is voor {0} klant(en) niet gevuld",
+                                                                   "FullName is voor {0} klant(en) niet gevuld",
+                                                                   "ShortName is voor {0} klant(en) niet gevuld"
+                                                               ],
+                                                "Name":  "",
+                                                "Operator":  "and"
+                                            }
+                                        ],
+                             "TableRow":  {
+                                              "AlternativeNames":  "",
+                                              "CreatedTimestamp":  "\/Date(1512737460737)\/",
+                                              "FullName":  "",
+                                              "ID":  "",
+                                              "KvK":  "",
+                                              "ModifiedTimestamp":  "\/Date(1512737460737)\/",
+                                              "Name":  "ioresearch",
+                                              "ShortName":  "",
+                                              "Status":  "Active",
+                                              "SubscriptionID":  "71f69c43-696d-4f08-aed9-f42a5216649b",
+                                              "PartitionKey":  "ITON",
+                                              "RowKey":  "3ed5cbfd-a627-47d4-8969-b2b8a72395c4",
+                                              "TableTimestamp":  "\/Date(1513237716944)\/",
+                                              "Etag":  "W/\"datetime\u00272017-12-14T07%3A48%3A36.9441238Z\u0027\"",
+                                              "Datum":  "20171208"
+                                          }
+                         },
+                         {
+                             "RowKey":  "4039763b-bd5b-4a08-95f5-d704295bf6e1",
+                             "Result":  [
+                                            {
+                                                "InfoType":  "",
+                                                "CheckSuccess":  true,
+                                                "Informatie":  [
+                                                                   "ID is {0} keer niet gevuld",
+                                                                   "KVK is voor {0} klant(en) niet gevuld",
+                                                                   "FullName is voor {0} klant(en) niet gevuld",
+                                                                   "ShortName is voor {0} klant(en) niet gevuld"
+                                                               ],
+                                                "Name":  "",
+                                                "Operator":  "and"
+                                            }
+                                        ],
+                             "TableRow":  {
+                                              "AlternativeNames":  "",
+                                              "CreatedTimestamp":  "\/Date(1512737460737)\/",
+                                              "FullName":  "",
+                                              "ID":  "",
+                                              "KvK":  "",
+                                              "ModifiedTimestamp":  "\/Date(1512737460737)\/",
+                                              "Name":  "graydontest",
+                                              "ShortName":  "",
+                                              "Status":  "Active",
+                                              "SubscriptionID":  "a0bc2863-3afb-4fa5-aa95-8c1adf6e03a2",
+                                              "PartitionKey":  "ITON",
+                                              "RowKey":  "4039763b-bd5b-4a08-95f5-d704295bf6e1",
+                                              "TableTimestamp":  "\/Date(1513237716945)\/",
+                                              "Etag":  "W/\"datetime\u00272017-12-14T07%3A48%3A36.9451245Z\u0027\"",
+                                              "Datum":  "20171208"
+                                          }
+                         },
+                         {
+                             "RowKey":  "482a7ea7-0521-4588-ac93-4a77f66c098b",
+                             "Result":  [
+                                            {
+                                                "InfoType":  "",
+                                                "CheckSuccess":  true,
+                                                "Informatie":  [
+                                                                   "De shortname moet minimaal 2 en maximaal 6 characters lang  zijn, voor {0} klanten is dit niet het geval"
+                                                               ],
+                                                "Name":  "",
+                                                "Operator":  "and"
+                                            }
+                                        ],
+                             "TableRow":  {
+                                              "AlternativeNames":  "",
+                                              "CreatedTimestamp":  "\/Date(1512737460738)\/",
+                                              "FullName":  "DataQuint B.V.",
+                                              "ID":  "24352849-0000-0000-0000-000000000000",
+                                              "KvK":  "24352849",
+                                              "ModifiedTimestamp":  "\/Date(1512737460738)\/",
+                                              "Name":  "DataQuint",
+                                              "ShortName":  "dq",
+                                              "Status":  "Active",
+                                              "SubscriptionID":  "af2a3d67-f53f-4eb2-87d9-a629a155f2f2",
+                                              "PartitionKey":  "ITON",
+                                              "RowKey":  "482a7ea7-0521-4588-ac93-4a77f66c098b",
+                                              "TableTimestamp":  "\/Date(1513237716945)\/",
+                                              "Etag":  "W/\"datetime\u00272017-12-14T07%3A48%3A36.9451245Z\u0027\"",
+                                              "Datum":  "20171208"
+                                          }
+                         },
+                         {
+                             "RowKey":  "52fa52b9-19ea-40b1-83ef-7fc80603f1f7",
+                             "Result":  [
+                                            {
+                                                "InfoType":  "",
+                                                "CheckSuccess":  true,
+                                                "Informatie":  [
+                                                                   "De shortname moet minimaal 2 en maximaal 6 characters lang  zijn, voor {0} klanten is dit niet het geval"
+                                                               ],
+                                                "Name":  "",
+                                                "Operator":  "and"
+                                            }
+                                        ],
+                             "TableRow":  {
+                                              "AlternativeNames":  "",
+                                              "CreatedTimestamp":  "\/Date(1512737460738)\/",
+                                              "FullName":  "NietFacturabel",
+                                              "ID":  "88888888-0001-0000-0000-000000000000",
+                                              "KvK":  "88888888",
+                                              "ModifiedTimestamp":  "\/Date(1512737460738)\/",
+                                              "Name":  "demo1",
+                                              "ShortName":  "demo1",
+                                              "Status":  "Active",
+                                              "SubscriptionID":  "fdbcfecb-4816-4cc2-b0aa-5dcf3a6f3048",
+                                              "PartitionKey":  "ITON",
+                                              "RowKey":  "52fa52b9-19ea-40b1-83ef-7fc80603f1f7",
+                                              "TableTimestamp":  "\/Date(1513237716946)\/",
+                                              "Etag":  "W/\"datetime\u00272017-12-14T07%3A48%3A36.9461252Z\u0027\"",
+                                              "Datum":  "20171208"
+                                          }
+                         },
+                         {
+                             "RowKey":  "5eab20f1-a2e2-43d1-8f8f-8223bf81980c",
+                             "Result":  [
+                                            {
+                                                "InfoType":  "",
+                                                "CheckSuccess":  true,
+                                                "Informatie":  [
+                                                                   "De shortname moet minimaal 2 en maximaal 6 characters lang  zijn, voor {0} klanten is dit niet het geval"
+                                                               ],
+                                                "Name":  "",
+                                                "Operator":  "and"
+                                            }
+                                        ],
+                             "TableRow":  {
+                                              "AlternativeNames":  "",
+                                              "CreatedTimestamp":  "\/Date(1512737460738)\/",
+                                              "FullName":  "Ydentic",
+                                              "ID":  "67474756-0000-0000-0000-000000000000",
+                                              "KvK":  "67474756",
+                                              "ModifiedTimestamp":  "\/Date(1512737460738)\/",
+                                              "Name":  "YdenticDemo",
+                                              "ShortName":  "ydentic",
+                                              "Status":  "Active",
+                                              "SubscriptionID":  "078cef0e-89b8-45b4-8d49-42abb2f3c410",
+                                              "PartitionKey":  "ITON",
+                                              "RowKey":  "5eab20f1-a2e2-43d1-8f8f-8223bf81980c",
+                                              "TableTimestamp":  "\/Date(1513237716946)\/",
+                                              "Etag":  "W/\"datetime\u00272017-12-14T07%3A48%3A36.9461252Z\u0027\"",
+                                              "Datum":  "20171208"
+                                          }
+                         },
+                         {
+                             "RowKey":  "7d3054e8-2593-4a0f-9ede-3df82d629c52",
+                             "Result":  [
+                                            {
+                                                "InfoType":  "",
+                                                "CheckSuccess":  true,
+                                                "Informatie":  [
+                                                                   "ID is {0} keer niet gevuld",
+                                                                   "KVK is voor {0} klant(en) niet gevuld",
+                                                                   "FullName is voor {0} klant(en) niet gevuld",
+                                                                   "ShortName is voor {0} klant(en) niet gevuld"
+                                                               ],
+                                                "Name":  "",
+                                                "Operator":  "and"
+                                            }
+                                        ],
+                             "TableRow":  {
+                                              "ShortName":  "",
+                                              "FullName":  "",
+                                              "ID":  "",
+                                              "CreatedTimestamp":  "\/Date(1513241293238)\/",
+                                              "SubscriptionID":  "938696dd-2f3e-45ef-93cb-06e5beb0a7a0",
+                                              "AlternativeNames":  "",
+                                              "Name":  "brinks",
+                                              "ModifiedTimestamp":  "\/Date(1513241293238)\/",
+                                              "Status":  "Active",
+                                              "KvK":  "",
+                                              "PartitionKey":  "ITON",
+                                              "RowKey":  "7d3054e8-2593-4a0f-9ede-3df82d629c52",
+                                              "TableTimestamp":  "\/Date(1513241293546)\/",
+                                              "Etag":  "W/\"datetime\u00272017-12-14T08%3A48%3A13.5463248Z\u0027\"",
+                                              "Datum":  "20171214"
+                                          }
+                         },
+                         {
+                             "RowKey":  "8298297d-eb5d-4184-9c6b-5b0b18c3ed9d",
+                             "Result":  [
+                                            {
+                                                "InfoType":  "",
+                                                "CheckSuccess":  true,
+                                                "Informatie":  [
+                                                                   "ID is {0} keer niet gevuld",
+                                                                   "KVK is voor {0} klant(en) niet gevuld",
+                                                                   "FullName is voor {0} klant(en) niet gevuld",
+                                                                   "ShortName is voor {0} klant(en) niet gevuld"
+                                                               ],
+                                                "Name":  "",
+                                                "Operator":  "and"
+                                            }
+                                        ],
+                             "TableRow":  {
+                                              "ShortName":  "",
+                                              "FullName":  "",
+                                              "ID":  "",
+                                              "CreatedTimestamp":  "\/Date(1516388465866)\/",
+                                              "SubscriptionID":  "cf5bbf0f-7272-45dc-8433-24506b88d752",
+                                              "AlternativeNames":  "",
+                                              "Name":  "ydenticssp",
+                                              "ModifiedTimestamp":  "\/Date(1516388465866)\/",
+                                              "Status":  "Active",
+                                              "KvK":  "",
+                                              "PartitionKey":  "ITON",
+                                              "RowKey":  "8298297d-eb5d-4184-9c6b-5b0b18c3ed9d",
+                                              "TableTimestamp":  "\/Date(1516388466765)\/",
+                                              "Etag":  "W/\"datetime\u00272018-01-19T19%3A01%3A06.7653396Z\u0027\"",
+                                              "Datum":  "20180119"
+                                          }
+                         },
+                         {
+                             "RowKey":  "84d5c76b-938c-406c-aae5-229c232afdb4",
+                             "Result":  [
+                                            {
+                                                "InfoType":  "",
+                                                "CheckSuccess":  true,
+                                                "Informatie":  [
+                                                                   "ShortName is voor {0} klant(en) niet gevuld"
+                                                               ],
+                                                "Name":  "",
+                                                "Operator":  "and"
+                                            }
+                                        ],
+                             "TableRow":  {
+                                              "AlternativeNames":  "",
+                                              "CreatedTimestamp":  "\/Date(1512737460739)\/",
+                                              "FullName":  "NietFacturabel",
+                                              "ID":  "88888888-0007-0000-0000-000000000000",
+                                              "KvK":  "88888888",
+                                              "ModifiedTimestamp":  "\/Date(1512737460739)\/",
+                                              "Name":  "rla",
+                                              "ShortName":  "",
+                                              "Status":  "Active",
+                                              "SubscriptionID":  "bd0368cf-01e3-48ea-8e9d-63b5fa47a866",
+                                              "PartitionKey":  "ITON",
+                                              "RowKey":  "84d5c76b-938c-406c-aae5-229c232afdb4",
+                                              "TableTimestamp":  "\/Date(1513237716947)\/",
+                                              "Etag":  "W/\"datetime\u00272017-12-14T07%3A48%3A36.9471259Z\u0027\"",
+                                              "Datum":  "20171208"
+                                          }
+                         },
+                         {
+                             "RowKey":  "85f132ac-da98-4b9d-b358-d174ec7347bf",
+                             "Result":  [
+                                            {
+                                                "InfoType":  "",
+                                                "CheckSuccess":  true,
+                                                "Informatie":  [
+                                                                   "ID is {0} keer niet gevuld",
+                                                                   "KVK is voor {0} klant(en) niet gevuld",
+                                                                   "FullName is voor {0} klant(en) niet gevuld",
+                                                                   "ShortName is voor {0} klant(en) niet gevuld"
+                                                               ],
+                                                "Name":  "",
+                                                "Operator":  "and"
+                                            }
+                                        ],
+                             "TableRow":  {
+                                              "AlternativeNames":  "",
+                                              "CreatedTimestamp":  "\/Date(1512737460739)\/",
+                                              "FullName":  "",
+                                              "ID":  "",
+                                              "KvK":  "",
+                                              "ModifiedTimestamp":  "\/Date(1512737460739)\/",
+                                              "Name":  "",
+                                              "ShortName":  "",
+                                              "Status":  "Active",
+                                              "SubscriptionID":  "00000000-0000-0000-0000-000000000000",
+                                              "PartitionKey":  "ITON",
+                                              "RowKey":  "85f132ac-da98-4b9d-b358-d174ec7347bf",
+                                              "TableTimestamp":  "\/Date(1513237716947)\/",
+                                              "Etag":  "W/\"datetime\u00272017-12-14T07%3A48%3A36.9471259Z\u0027\"",
+                                              "Datum":  "20171208"
+                                          }
+                         },
+                         {
+                             "RowKey":  "8c9eead4-3e9b-4b89-8515-2477af0a5403",
+                             "Result":  [
+                                            {
+                                                "InfoType":  "",
+                                                "CheckSuccess":  true,
+                                                "Informatie":  [
+                                                                   "ID is {0} keer niet gevuld",
+                                                                   "KVK is voor {0} klant(en) niet gevuld",
+                                                                   "FullName is voor {0} klant(en) niet gevuld",
+                                                                   "ShortName is voor {0} klant(en) niet gevuld"
+                                                               ],
+                                                "Name":  "",
+                                                "Operator":  "and"
+                                            }
+                                        ],
+                             "TableRow":  {
+                                              "AlternativeNames":  "",
+                                              "CreatedTimestamp":  "\/Date(1512737460739)\/",
+                                              "FullName":  "",
+                                              "ID":  "",
+                                              "KvK":  "",
+                                              "ModifiedTimestamp":  "\/Date(1512737460739)\/",
+                                              "Name":  "Restricted Tenant Admin",
+                                              "ShortName":  "",
+                                              "Status":  "Active",
+                                              "SubscriptionID":  "7d46319b-a4e1-4f1a-a517-642b1a623395",
+                                              "PartitionKey":  "ITON",
+                                              "RowKey":  "8c9eead4-3e9b-4b89-8515-2477af0a5403",
+                                              "TableTimestamp":  "\/Date(1513237716948)\/",
+                                              "Etag":  "W/\"datetime\u00272017-12-14T07%3A48%3A36.9481262Z\u0027\"",
+                                              "Datum":  "20171208"
+                                          }
+                         },
+                         {
+                             "RowKey":  "9c1941e2-aee7-40ad-99d8-164178a68b3e",
+                             "Result":  [
+                                            {
+                                                "InfoType":  "",
+                                                "CheckSuccess":  true,
+                                                "Informatie":  [
+                                                                   "ShortName is voor {0} klant(en) niet gevuld"
+                                                               ],
+                                                "Name":  "",
+                                                "Operator":  "and"
+                                            }
+                                        ],
+                             "TableRow":  {
+                                              "AlternativeNames":  "",
+                                              "CreatedTimestamp":  "\/Date(1512737460739)\/",
+                                              "FullName":  "ITON Services B.V.",
+                                              "ID":  "30074877-0000-0000-0000-000000000000",
+                                              "KvK":  "30074877",
+                                              "ModifiedTimestamp":  "\/Date(1512737460739)\/",
+                                              "Name":  "wolv2",
+                                              "ShortName":  "",
+                                              "Status":  "Active",
+                                              "SubscriptionID":  "2a92f60e-0951-4bcf-81d8-6da77258f612",
+                                              "PartitionKey":  "ITON",
+                                              "RowKey":  "9c1941e2-aee7-40ad-99d8-164178a68b3e",
+                                              "TableTimestamp":  "\/Date(1513237716948)\/",
+                                              "Etag":  "W/\"datetime\u00272017-12-14T07%3A48%3A36.9481262Z\u0027\"",
+                                              "Datum":  "20171208"
+                                          }
+                         },
+                         {
+                             "RowKey":  "a05d1226-c55c-4efe-9bc9-27cdf3e4a63e",
+                             "Result":  [
+                                            {
+                                                "InfoType":  "",
+                                                "CheckSuccess":  true,
+                                                "Informatie":  [
+                                                                   "De shortname moet minimaal 2 en maximaal 6 characters lang  zijn, voor {0} klanten is dit niet het geval"
+                                                               ],
+                                                "Name":  "",
+                                                "Operator":  "and"
+                                            }
+                                        ],
+                             "TableRow":  {
+                                              "AlternativeNames":  "",
+                                              "CreatedTimestamp":  "\/Date(1512737460740)\/",
+                                              "FullName":  "VenturesOne B.V.",
+                                              "ID":  "27142237-0000-0000-0000-000000000000",
+                                              "KvK":  "27142237",
+                                              "ModifiedTimestamp":  "\/Date(1512737460740)\/",
+                                              "Name":  "VenturesOne",
+                                              "ShortName":  "vo",
+                                              "Status":  "Active",
+                                              "SubscriptionID":  "c7e3bc94-dfd1-4ceb-b0b8-41515e91c13c",
+                                              "PartitionKey":  "ITON",
+                                              "RowKey":  "a05d1226-c55c-4efe-9bc9-27cdf3e4a63e",
+                                              "TableTimestamp":  "\/Date(1513237716948)\/",
+                                              "Etag":  "W/\"datetime\u00272017-12-14T07%3A48%3A36.9481262Z\u0027\"",
+                                              "Datum":  "20171208"
+                                          }
+                         },
+                         {
+                             "RowKey":  "d2fbf763-b542-4665-a802-48b56ac4af75",
+                             "Result":  [
+                                            {
+                                                "InfoType":  "",
+                                                "CheckSuccess":  true,
+                                                "Informatie":  [
+                                                                   "ID is {0} keer niet gevuld",
+                                                                   "KVK is voor {0} klant(en) niet gevuld",
+                                                                   "FullName is voor {0} klant(en) niet gevuld",
+                                                                   "ShortName is voor {0} klant(en) niet gevuld"
+                                                               ],
+                                                "Name":  "",
+                                                "Operator":  "and"
+                                            }
+                                        ],
+                             "TableRow":  {
+                                              "AlternativeNames":  "",
+                                              "CreatedTimestamp":  "\/Date(1512737460740)\/",
+                                              "FullName":  "",
+                                              "ID":  "",
+                                              "KvK":  "",
+                                              "ModifiedTimestamp":  "\/Date(1512737460740)\/",
+                                              "Name":  "Administrator",
+                                              "ShortName":  "",
+                                              "Status":  "Active",
+                                              "SubscriptionID":  "75700cd5-893e-4f68-ada7-50ef4668acc6",
+                                              "PartitionKey":  "ITON",
+                                              "RowKey":  "d2fbf763-b542-4665-a802-48b56ac4af75",
+                                              "TableTimestamp":  "\/Date(1513237716949)\/",
+                                              "Etag":  "W/\"datetime\u00272017-12-14T07%3A48%3A36.9491278Z\u0027\"",
+                                              "Datum":  "20171208"
+                                          }
+                         },
+                         {
+                             "RowKey":  "d43a8736-9b98-452b-9082-3621f7eaef86",
+                             "Result":  [
+                                            {
+                                                "InfoType":  "",
+                                                "CheckSuccess":  true,
+                                                "Informatie":  [
+                                                                   "ID is {0} keer niet gevuld",
+                                                                   "KVK is voor {0} klant(en) niet gevuld",
+                                                                   "FullName is voor {0} klant(en) niet gevuld",
+                                                                   "ShortName is voor {0} klant(en) niet gevuld"
+                                                               ],
+                                                "Name":  "",
+                                                "Operator":  "and"
+                                            }
+                                        ],
+                             "TableRow":  {
+                                              "ShortName":  "",
+                                              "FullName":  "",
+                                              "ID":  "",
+                                              "CreatedTimestamp":  "\/Date(1513882868235)\/",
+                                              "SubscriptionID":  "1804f16f-07d0-45ab-95f6-fd2445f55825",
+                                              "AlternativeNames":  "",
+                                              "Name":  "demo2016",
+                                              "ModifiedTimestamp":  "\/Date(1513882868235)\/",
+                                              "Status":  "Active",
+                                              "KvK":  "",
+                                              "PartitionKey":  "ITON",
+                                              "RowKey":  "d43a8736-9b98-452b-9082-3621f7eaef86",
+                                              "TableTimestamp":  "\/Date(1513882867737)\/",
+                                              "Etag":  "W/\"datetime\u00272017-12-21T19%3A01%3A07.7375043Z\u0027\"",
+                                              "Datum":  "20171221"
+                                          }
+                         },
+                         {
+                             "RowKey":  "d5fe54e7-0041-4fdc-b555-7c33eed81f30",
+                             "Result":  [
+                                            {
+                                                "InfoType":  "",
+                                                "CheckSuccess":  true,
+                                                "Informatie":  [
+                                                                   "ShortName is voor {0} klant(en) niet gevuld"
+                                                               ],
+                                                "Name":  "",
+                                                "Operator":  "and"
+                                            }
+                                        ],
+                             "TableRow":  {
+                                              "AlternativeNames":  "",
+                                              "CreatedTimestamp":  "\/Date(1512737460741)\/",
+                                              "FullName":  "NietFacturabel",
+                                              "ID":  "88888888-0008-0000-0000-000000000000",
+                                              "KvK":  "88888888",
+                                              "ModifiedTimestamp":  "\/Date(1512737460741)\/",
+                                              "Name":  "admpke",
+                                              "ShortName":  "",
+                                              "Status":  "Active",
+                                              "SubscriptionID":  "09a952c0-fa8a-4e0a-9b89-de1caaa12b58",
+                                              "PartitionKey":  "ITON",
+                                              "RowKey":  "d5fe54e7-0041-4fdc-b555-7c33eed81f30",
+                                              "TableTimestamp":  "\/Date(1513237716950)\/",
+                                              "Etag":  "W/\"datetime\u00272017-12-14T07%3A48%3A36.9501285Z\u0027\"",
+                                              "Datum":  "20171208"
+                                          }
+                         },
+                         {
+                             "RowKey":  "ed262cce-726b-4ea6-b0da-96f6c20d44d2",
+                             "Result":  [
+                                            {
+                                                "InfoType":  "",
+                                                "CheckSuccess":  true,
+                                                "Informatie":  [
+                                                                   "De shortname moet minimaal 2 en maximaal 6 characters lang  zijn, voor {0} klanten is dit niet het geval"
+                                                               ],
+                                                "Name":  "",
+                                                "Operator":  "and"
+                                            }
+                                        ],
+                             "TableRow":  {
+                                              "AlternativeNames":  "",
+                                              "CreatedTimestamp":  "\/Date(1512737460741)\/",
+                                              "FullName":  "Tropen Advies Centrum Rotterdam",
+                                              "ID":  "50649388-0000-0000-0000-000000000000",
+                                              "KvK":  "50649388",
+                                              "ModifiedTimestamp":  "\/Date(1512737460741)\/",
+                                              "Name":  "trvlclinic",
+                                              "ShortName":  "tc",
+                                              "Status":  "Active",
+                                              "SubscriptionID":  "aa50a6d0-345f-42f5-86e0-1537b22ac696",
+                                              "PartitionKey":  "ITON",
+                                              "RowKey":  "ed262cce-726b-4ea6-b0da-96f6c20d44d2",
+                                              "TableTimestamp":  "\/Date(1513237716950)\/",
+                                              "Etag":  "W/\"datetime\u00272017-12-14T07%3A48%3A36.9501285Z\u0027\"",
+                                              "Datum":  "20171208"
+                                          }
+                         },
+                         {
+                             "RowKey":  "f5ecf6f2-bbf8-4c8b-960d-407f0fa5ef93",
+                             "Result":  [
+                                            {
+                                                "InfoType":  "",
+                                                "CheckSuccess":  true,
+                                                "Informatie":  [
+                                                                   "De shortname moet minimaal 2 en maximaal 6 characters lang  zijn, voor {0} klanten is dit niet het geval"
+                                                               ],
+                                                "Name":  "",
+                                                "Operator":  "and"
+                                            }
+                                        ],
+                             "TableRow":  {
+                                              "AlternativeNames":  "",
+                                              "CreatedTimestamp":  "\/Date(1512737460741)\/",
+                                              "FullName":  "Ydentic",
+                                              "ID":  "67474756-0000-0000-0000-000000000000",
+                                              "KvK":  "67474756",
+                                              "ModifiedTimestamp":  "\/Date(1512737460741)\/",
+                                              "Name":  "ydentic",
+                                              "ShortName":  "yd",
+                                              "Status":  "Active",
+                                              "SubscriptionID":  "9d92ef78-935f-4b4a-81ec-40a12d2b2fd1",
+                                              "PartitionKey":  "ITON",
+                                              "RowKey":  "f5ecf6f2-bbf8-4c8b-960d-407f0fa5ef93",
+                                              "TableTimestamp":  "\/Date(1513237716950)\/",
+                                              "Etag":  "W/\"datetime\u00272017-12-14T07%3A48%3A36.9501285Z\u0027\"",
+                                              "Datum":  "20171208"
+                                          }
+                         }
+                     ]
+}

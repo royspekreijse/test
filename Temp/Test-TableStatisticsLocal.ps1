@@ -35,15 +35,24 @@ $StorageAccountName = 'csanalytics'
 
     $Report = New-TableStatistics -Machines $Machines -MachineReport $MachineReport -NumberOfPreviousDays $NumberOfPreviousDays
     
-    $MissingIaaSMachines = Get-content $env:TEMP\MachineReport-MissingIaaSMachines.json -raw |convertfrom-json
-    $NoNettoValues = Get-content $env:TEMP\MachineReport-NoNettoValues.json -raw |convertfrom-json
     $NoIaaSMachines = Get-content $env:TEMP\Machines-NoIaaSMachines.json -raw |convertfrom-json
-
+    $NoWindowsMachines = Get-content $env:TEMP\Machines-NoWindowsMachines.json -raw |convertfrom-json
+    $MissingIaaSMachines = Get-content $env:TEMP\MachineReport-MissingIaaSMachines.json -raw |convertfrom-json
+    $MachinesMultipleMAC = Get-content $env:TEMP\Machines-MultipleMAC.json -raw |convertfrom-json
+    $NoBrutoValues = Get-content $env:TEMP\MachineReport-NoBrutoValues.json -raw |convertfrom-json
+    $NoNettoValues = Get-content $env:TEMP\MachineReport-NoNettoValues.json -raw |convertfrom-json
+    $MachineReportMultipleMAC = Get-content $env:TEMP\MachineReport-MultipleMAC.json -raw |convertfrom-json
+    
     $Time = (Get-Date).ToUniversalTime().ToString("yyyyMMddhhmm")
     New-Item "C:\GitTmp\$($Time)" -ItemType Directory
-    Copy-Item $env:TEMP\MachineReport-MissingIaaSMachines.json "C:\GitTmp\$($Time)"
-    Copy-Item $env:TEMP\MachineReport-NoNettoValues.json "C:\GitTmp\$($Time)"
+
     Copy-Item $env:TEMP\Machines-NoIaaSMachines.json "C:\GitTmp\$($Time)"
+    Copy-Item $env:TEMP\Machines-NoWindowsMachines.json "C:\GitTmp\$($Time)"
+    Copy-Item $env:TEMP\Machines-MultipleMAC.json "C:\GitTmp\$($Time)"
+    Copy-Item $env:TEMP\MachineReport-MissingIaaSMachines.json "C:\GitTmp\$($Time)"
+    Copy-Item $env:TEMP\MachineReport-NoBrutoValues.json "C:\GitTmp\$($Time)"
+    Copy-Item $env:TEMP\MachineReport-NoNettoValues.json "C:\GitTmp\$($Time)"
+    Copy-Item $env:TEMP\MachineReport-MultipleMAC.json "C:\GitTmp\$($Time)"
 
     $Report.Info
 
