@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="3" errors="0" failures="1" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2018-02-09" time="12:17:17">
+  <environment user="peppe" machine-name="DESKTOP-MM28QPO" cwd="C:\WINDOWS\system32" user-domain="DESKTOP-MM28QPO" platform="Microsoft Windows 10 Enterprise Insider Preview|C:\WINDOWS|\Device\Harddisk0\Partition2" nunit-version="2.5.8.0" os-version="10.0.17074" clr-version="4.0.30319.42000" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="1.3425" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\Users\peppe\OneDrive\GitHub\CS-Analytics\IaaSMetrics\Tests\Install\Pre-Install.Tests.ps1" executed="True" result="Failure" success="False" time="1.3425" asserts="0" description="C:\Users\peppe\OneDrive\GitHub\CS-Analytics\IaaSMetrics\Tests\Install\Pre-Install.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Pre-Installation tests" executed="True" result="Failure" success="False" time="1.3425" asserts="0" description="Pre-Installation tests">
+            <results>
+              <test-suite type="TestFixture" name="system" executed="True" result="Failure" success="False" time="1.3425" asserts="0" description="system">
+                <results>
+                  <test-case description="should be a a windows based machine with minimum OS level 2012R2" name="Pre-Installation tests.system.should be a a windows based machine with minimum OS level 2012R2" time="1.059" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="should have a working Internet connection" name="Pre-Installation tests.system.should have a working Internet connection" time="0.2117" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="should have PowerShell 5.0 or higher present" name="Pre-Installation tests.system.should have PowerShell 5.0 or higher present" time="0.0718" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Expected: {True}
+But was:  {False}</message>
+                      <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\peppe\OneDrive\GitHub\CS-Analytics\IaaSMetrics\Tests\Install\Pre-Install.Tests.ps1: line 12
+12:             $PSVersionTable.PSVersion -ge '6.0' | Should Be $true</stack-trace>
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
