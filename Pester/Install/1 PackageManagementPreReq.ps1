@@ -45,16 +45,7 @@ else {
 Get-ChildItem -Path (Join-Path -Path $PSScriptRoot -ChildPath 'Functions' ) -Recurse | Where-Object { $_.Name -notlike '_*' -and $_.Name -notlike '*.tests.ps1' -and $_.Name -like '*.ps1'} | ForEach-Object { . $_.FullName }
 
 #Set write-warning to better stand-out from verbose and debug info.
-$a = (Get-Host).PrivateData
-If ($a) {
-    #Not every PS host has this capability
-    $PreviousWarningBackgroundColor = $a.WarningBackgroundColor
-    $PreviousWarningForegroundColor = $a.WarningForegroundColor
-    $PreviousVerboseForegroundColor = $a.VerboseForegroundColor
-    $a.WarningBackgroundColor = "red"
-    $a.WarningForegroundColor = "white"
-    $a.VerboseForegroundColor = 'cyan'
-}
+Format-OutputColor
 
 #There may be no pester present, so test without it first
 $prereqConditions = @(
@@ -273,11 +264,7 @@ If ($PesterExceptions -ne 0) {
 #}
 #>
 
-If ($a) {
-    $a.WarningBackgroundColor = $PreviousWarningBackgroundColor
-    $a.WarningForegroundColor = $PreviousWarningForegroundColor
-    $a.VerboseForegroundColor = $PreviousVerboseForegroundColor
-}
+Format-OutputColor -ResetToDefault
 
 Write-Host -NoNewLine "Press any key to continue..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
